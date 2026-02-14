@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service à Domicile Express</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset et style de base */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+        body { line-height: 1.6; color: #333; scroll-behavior: smooth; }
+        img { max-width: 100%; border-radius: 10px; }
+        h1,h2,h3 { color: #4CAF50; }
+        section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+        button { cursor: pointer; transition: 0.3s; }
+
+        /* Header */
+        header { background: #4CAF50; color: white; text-align: center; padding: 80px 20px; position: relative; }
+        header h1 { font-size: 2.8rem; margin-bottom: 20px; opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        header button { padding: 15px 30px; font-size: 1.2rem; background: #fff; color: #4CAF50; border: none; border-radius: 5px; opacity: 0; transform: translateY(30px); transition: all 0.8s ease 0.3s; }
+        header button:hover { background: #e0e0e0; }
+
+        /* Animations scroll */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Services */
+        .services, .how-it-works, .testimonials, .packages { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .service, .step, .testimonial, .package { background: #f4f4f4; padding: 20px; border-radius: 10px; flex: 1 1 250px; max-width: 300px; text-align: center; opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .service h3, .step h3, .testimonial strong, .package h3 { margin: 10px 0; }
+
+        /* How it works */
+        .how-it-works { justify-content: space-around; }
+
+        /* Contact */
+        .contact-form form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: auto; }
+        .contact-form input, .contact-form textarea { padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+        .contact-form button { padding: 15px; border: none; border-radius: 5px; background: #4CAF50; color: white; font-size: 1rem; }
+        .contact-form button:hover { background: #45a049; }
+
+        /* Footer */
+        footer { text-align: center; padding: 20px; background: #333; color: white; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .service, .step, .testimonial, .package { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page d’accueil -->
+    <header>
+        <h1 class="fade-in">Votre service à domicile en moins de 24h !</h1>
+        <button class="fade-in" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Réserver maintenant</button>
+    </header>
+
+    <!-- Nos services -->
+    <section id="services">
+        <h2 class="fade-in">Nos Services</h2>
+        <div class="services">
+            <div class="service fade-in">
+                <img src="https://via.placeholder.com/300x200" alt="Nettoyage">
+                <h3>Nettoyage</h3>
+                <p>À partir de 50€ par intervention</p>
+            </div>
+            <div class="service fade-in">
+                <img src="https://via.placeholder.com/300x200" alt="Bricolage">
+                <h3>Bricolage</h3>
+                <p>À partir de 40€ par heure</p>
+            </div>
+            <div class="service fade-in">
+                <img src="https://via.placeholder.com/300x200" alt="Cours particuliers">
+                <h3>Cours particuliers</h3>
+                <p>À partir de 30€ par heure</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages -->
+    <section id="packages">
+        <h2 class="fade-in">Nos Packages</h2>
+        <div class="packages">
+            <div class="package fade-in">
+                <h3>Pack Hebdomadaire Nettoyage</h3>
+                <p>4 interventions / semaine</p>
+                <p>Prix : 180€/mois</p>
+                <button onclick="alert('Redirection vers paiement Stripe')">Payer maintenant</button>
+            </div>
+            <div class="package fade-in">
+                <h3>Pack Bricolage Mensuel</h3>
+                <p>8 heures / mois</p>
+                <p>Prix : 280€/mois</p>
+                <button onclick="alert('Redirection vers paiement Stripe')">Payer maintenant</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comment ça marche -->
+    <section id="how-it-works">
+        <h2 class="fade-in">Comment ça marche</h2>
+        <div class="how-it-works">
+            <div class="step fade-in">
+                <h3>1. Choisir</h3>
+                <p>Sélectionnez le service dont vous avez besoin.</p>
+            </div>
+            <div class="step fade-in">
+                <h3>2. Réserver</h3>
+                <p>Réservez en ligne ou par WhatsApp facilement.</p>
+            </div>
+            <div class="step fade-in">
+                <h3>3. Recevoir</h3>
+                <p>Le service est réalisé rapidement à votre domicile.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avis clients -->
+    <section id="testimonials">
+        <h2 class="fade-in">Avis Clients</h2>
+        <div class="testimonials">
+            <div class="testimonial fade-in">
+                <img src="https://via.placeholder.com/300x200" alt="Client 1">
+                <p>"Service rapide et efficace ! Je recommande."</p>
+                <strong>- Marie</strong>
+            </div>
+            <div class="testimonial fade-in">
+                <img src="https://via.placeholder.com/300x200" alt="Client 2">
+                <p>"Très professionnel et ponctuel."</p>
+                <strong>- Ahmed</strong>
+            </div>
+            <div class="testimonial fade-in">
+                <img src="https://via.placeholder.com/300x200" alt="Client 3">
+                <p>"Une expérience sans stress, tout est parfait."</p>
+                <strong>- Sara</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Réservation -->
+    <section id="contact" class="contact-form">
+        <h2 class="fade-in">Contact / Réservation</h2>
+        <form onsubmit="alert('Formulaire envoyé !'); return false;">
+            <input type="text" placeholder="Nom complet" required>
+            <input type="email" placeholder="Email" required>
+            <input type="tel" placeholder="Téléphone" required>
+            <textarea placeholder="Votre message / détails de réservation" rows="4" required></textarea>
+            <button type="submit">Envoyer la demande</button>
+        </form>
+        <p style="text-align:center;margin-top:15px;">Paiement en ligne ou WhatsApp + paiement à la livraison</p>
+    </section>
+
+    <footer>
+        &copy; 2026 Service à Domicile Express | Tous droits réservés
+    </footer>
+
+    <script>
+        // Animation au scroll
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
+</body>
+</html>
