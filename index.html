@@ -1,118 +1,260 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Service à Domicile Express</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  /* Reset et styles globaux */
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
-  body { line-height: 1.6; color: #333; scroll-behavior: smooth; }
-  img { max-width: 100%; border-radius: 10px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service à Domicile Express</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  h1, h2, h3 { color: #4CAF50; }
-  section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+    <style>
+        /* Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+        body { line-height: 1.6; color: #333; scroll-behavior: smooth; }
+        img { max-width: 100%; border-radius: 10px; }
 
-  header {
-    background: linear-gradient(135deg, #4CAF50, #3a8d42);
-    color: white; text-align: center; padding: 100px 20px;
-  }
-  header h1 { font-size: 2.8rem; margin-bottom: 20px; }
-  header button {
-    padding: 15px 32px; font-size: 1.2rem;
-    background: white; color: #4CAF50;
-    border: none; border-radius: 5px;
-    font-weight: bold; cursor: pointer;
-    transition: 0.3s;
-  }
-  header button:hover { background: #e7e7e7; }
+        h1, h2, h3 { color: #4CAF50; }
+        section { padding: 60px 20px; max-width: 1200px; margin: auto; }
 
-  /* Section services dynamiques */
-  .services { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
-  .service {
-    background: #fff; padding: 20px; border-radius: 12px;
-    width: 300px; text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.25s, box-shadow 0.3s;
-  }
-  .service:hover { transform: translateY(-6px); box-shadow: 0 8px 20px rgba(0,0,0,0.18); }
-  .service h3 { margin: 10px 0; }
-  .service p { margin: 5px 0; }
-  .service button {
-    margin-top: 12px; padding: 12px 18px;
-    background: #4CAF50; color: white;
-    border: none; border-radius: 6px;
-    font-size: 1rem; cursor: pointer; transition: 0.3s ease;
-    width: 100%; font-weight: bold;
-  }
-  .service button:hover { background: #43a047; transform: scale(1.05); }
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #4CAF50, #3a8d42);
+            color: white; text-align: center; padding: 100px 20px;
+        }
+        header h1 { font-size: 2.8rem; margin-bottom: 20px; }
+        header button {
+            padding: 15px 32px; font-size: 1.2rem;
+            background: white; color: #4CAF50;
+            border: none; border-radius: 5px;
+            font-weight: bold; cursor: pointer;
+            transition: 0.3s;
+        }
+        header button:hover { background: #e7e7e7; }
 
-  footer { text-align: center; padding: 20px; background: #333; color: white; }
+        /* SERVICES */
+        .services {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 25px;
+        }
+        .service {
+            background: #fff; padding: 20px; border-radius: 12px;
+            width: 300px; text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.25s, box-shadow 0.3s;
+        }
+        .service:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+        }
+        .service h3 { margin: 10px 0; }
 
-  @media (max-width: 768px) {
-    header h1 { font-size: 1.9rem; }
-    .service { width: 100%; }
-  }
-</style>
+        .service button {
+            margin-top: 12px; padding: 12px 18px;
+            background: #4CAF50; color: white;
+            border: none; border-radius: 6px;
+            font-size: 1rem; cursor: pointer;
+            transition: 0.3s ease;
+            width: 100%; font-weight: bold;
+        }
+        .service button:hover {
+            background: #43a047; transform: scale(1.05);
+        }
+
+        /* PACKAGES */
+        .packages { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
+        .package {
+            background: #fff; padding: 25px; border-radius: 12px;
+            width: 300px; text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .package button {
+            margin-top: 15px; padding: 12px 18px;
+            background: #4CAF50; color: white;
+            border: none; border-radius: 6px;
+            font-size: 1rem; cursor: pointer; font-weight: bold;
+            transition: 0.3s ease;
+        }
+        .package button:hover { background: #43a047; }
+
+        /* Steps */
+        .how-it-works { display: flex; justify-content: center; flex-wrap: wrap; gap: 25px; }
+        .step {
+            background: #fff; padding: 20px; border-radius: 12px;
+            width: 250px; text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Testimonials */
+        .testimonials { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
+        .testimonial {
+            background: #fff; padding: 20px; border-radius: 12px;
+            width: 300px; text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Contact */
+        .contact-form form {
+            display: flex; flex-direction: column; gap: 15px;
+            max-width: 500px; margin: auto;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 12px; border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .contact-form button {
+            padding: 15px; border: none; border-radius: 5px;
+            background: #4CAF50; color: white;
+            font-size: 1rem; cursor: pointer; font-weight: bold;
+        }
+        .contact-form button:hover { background: #43a047; }
+
+        footer {
+            text-align: center; padding: 20px;
+            background: #333; color: white;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.9rem; }
+            .service, .package, .testimonial, .step { width: 100%; }
+        }
+    </style>
 </head>
+
 <body>
 
 <header>
-  <h1>Votre service à domicile en moins de 24h !</h1>
-  <button onclick="document.getElementById('services-section').scrollIntoView({behavior:'smooth'})">
-    Voir les services
-  </button>
+    <h1>Votre service à domicile en moins de 24h !</h1>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        Réserver maintenant
+    </button>
 </header>
 
-<section id="services-section">
-  <h2>Nos Services</h2>
-  <div class="services" id="services-container">
-    <p>Chargement des services...</p>
-  </div>
+<!-- SERVICES -->
+<section id="services">
+    <h2>Nos Services</h2>
+    <div class="services" id="services-list">
+        <!-- Les services seront injectés ici via JS -->
+    </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+    <h2>Nos Packages</h2>
+    <div class="packages">
+
+        <div class="package">
+            <h3>Pack Nettoyage Hebdomadaire</h3>
+            <p>4 interventions / semaine</p>
+            <p><strong>180€/mois</strong></p>
+            <button>Payer maintenant</button>
+        </div>
+
+        <div class="package">
+            <h3>Pack Bricolage Mensuel</h3>
+            <p>8 heures / mois</p>
+            <p><strong>280€/mois</strong></p>
+            <button>Payer maintenant</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- COMMENT ÇA MARCHE -->
+<section id="how-it-works">
+    <h2>Comment ça marche</h2>
+    <div class="how-it-works">
+
+        <div class="step">
+            <h3>1. Choisir</h3>
+            <p>Sélectionnez le service dont vous avez besoin.</p>
+        </div>
+
+        <div class="step">
+            <h3>2. Réserver</h3>
+            <p>Réservez en ligne ou par WhatsApp facilement.</p>
+        </div>
+
+        <div class="step">
+            <h3>3. Recevoir</h3>
+            <p>Le service arrive rapidement chez vous.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+    <h2>Avis Clients</h2>
+    <div class="testimonials">
+
+        <div class="testimonial">
+            <p>"Service rapide et efficace ! Je recommande." </p>
+            <strong>- Marie</strong>
+        </div>
+
+        <div class="testimonial">
+            <p>"Très professionnel et ponctuel."</p>
+            <strong>- Ahmed</strong>
+        </div>
+
+        <div class="testimonial">
+            <p>"Une expérience sans stress, tout est parfait."</p>
+            <strong>- Sara</strong>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-form">
+    <h2>Contact / Réservation</h2>
+
+    <form onsubmit="alert('Formulaire envoyé !'); return false;">
+        <input type="text" placeholder="Nom complet" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Téléphone" required>
+        <textarea rows="4" placeholder="Votre message" required></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <p style="text-align:center;margin-top:10px">
+        Paiement en ligne, WhatsApp, ou à la livraison
+    </p>
 </section>
 
 <footer>
-  © 2026 Service à Domicile Express | Tous droits réservés
+    © 2026 Service à Domicile Express | Tous droits réservés
 </footer>
 
 <script>
-  const apiURL = "https://multiservices-back-dsaedcabckhng0ej.canadacentral-01.azurewebsites.net/api/nettoyage";
-  const container = document.getElementById("services-container");
+    // Fonction pour récupérer les services depuis l'API
+    async function loadServices() {
+        try {
+            const response = await fetch('https://thankful-moss-011a5b603.6.azurestaticapps.net');
+            const services = await response.json();
 
-  async function loadServices() {
-    container.innerHTML = "<p>Chargement des services...</p>";
-    try {
-      const response = await fetch(apiURL);
-      if (!response.ok) throw new Error("Erreur HTTP " + response.status);
-      const services = await response.json();
+            const container = document.getElementById('services-list');
+            container.innerHTML = ''; // vider avant d'injecter
 
-      container.innerHTML = "";
-      if (services.length === 0) {
-        container.innerHTML = "<p>Aucun service disponible.</p>";
-        return;
-      }
+            services.forEach(service => {
+                const div = document.createElement('div');
+                div.className = 'service';
+                div.innerHTML = `
+                    <img src="https://via.placeholder.com/300x200" alt="${service.nom}">
+                    <h3>${service.nom}</h3>
+                    <p>${service.description}</p>
+                    <p><strong>${service.prix}</strong></p>
+                    <button onclick="alert('Vous avez choisi : ${service.nom}')">Réserver</button>
+                `;
+                container.appendChild(div);
+            });
 
-      services.forEach(service => {
-        const card = document.createElement("div");
-        card.className = "service";
-        card.innerHTML = `
-          <img src="https://via.placeholder.com/300x200" alt="${service.nom}">
-          <h3>${service.nom}</h3>
-          <p><strong>Prix :</strong> ${service.prix}</p>
-          <p>${service.description}</p>
-          <button onclick="alert('Vous avez choisi : ${service.nom}')">Réserver</button>
-        `;
-        container.appendChild(card);
-      });
-    } catch (err) {
-      container.innerHTML = `<p>Erreur lors du chargement: ${err.message}</p>`;
-      console.error(err);
+        } catch (error) {
+            console.error('Erreur lors du chargement des services:', error);
+            document.getElementById('services-list').innerHTML = '<p>Impossible de charger les services pour le moment.</p>';
+        }
     }
-  }
 
-  // Charger les services au chargement de la page
-  window.addEventListener("DOMContentLoaded", loadServices);
+    // Charger les services au démarrage
+    window.addEventListener('DOMContentLoaded', loadServices);
 </script>
 
 </body>
