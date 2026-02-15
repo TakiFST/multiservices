@@ -28,17 +28,7 @@
   }
   header button:hover { background: #e7e7e7; }
 
-  /* Onglets */
-  .tabs { display: flex; justify-content: center; margin-bottom: 25px; gap: 15px; flex-wrap: wrap; }
-  .tab-button {
-    padding: 12px 25px; border: none; border-radius: 6px;
-    background: #f0f0f0; color: #333; font-weight: bold; cursor: pointer;
-    transition: 0.3s;
-  }
-  .tab-button.active { background: #4CAF50; color: white; }
-  .tab-button:hover { background: #43a047; color: white; }
-
-  /* Cartes services */
+  /* Section services dynamiques */
   .services { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
   .service {
     background: #fff; padding: 20px; border-radius: 12px;
@@ -60,7 +50,10 @@
 
   footer { text-align: center; padding: 20px; background: #333; color: white; }
 
-  @media (max-width: 768px) { .service { width: 100%; } }
+  @media (max-width: 768px) {
+    header h1 { font-size: 1.9rem; }
+    .service { width: 100%; }
+  }
 </style>
 </head>
 <body>
@@ -74,15 +67,6 @@
 
 <section id="services-section">
   <h2>Nos Services</h2>
-
-  <!-- Onglets -->
-  <div class="tabs">
-    <button class="tab-button active" data-category="nettoyage">Nettoyage</button>
-    <button class="tab-button" data-category="bricolage">Bricolage</button>
-    <button class="tab-button" data-category="cours">Cours particuliers</button>
-  </div>
-
-  <!-- Conteneur des cartes -->
   <div class="services" id="services-container">
     <p>Chargement des services...</p>
   </div>
@@ -93,14 +77,13 @@
 </footer>
 
 <script>
-  const baseApiUrl = "https://multiservices-back-dsaedcabckhng0ej.canadacentral-01.azurewebsites.net/api";
+  const apiURL = "https://multiservices-back-dsaedcabckhng0ej.canadacentral-01.azurewebsites.net/api/nettoyage";
   const container = document.getElementById("services-container");
-  const tabButtons = document.querySelectorAll(".tab-button");
 
-  async function loadServices(category) {
+  async function loadServices() {
     container.innerHTML = "<p>Chargement des services...</p>";
     try {
-      const response = await fetch(`${baseApiUrl}/${category}`);
+      const response = await fetch(apiURL);
       if (!response.ok) throw new Error("Erreur HTTP " + response.status);
       const services = await response.json();
 
@@ -128,18 +111,8 @@
     }
   }
 
-  // Gestion des clics sur les onglets
-  tabButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      tabButtons.forEach(btn => btn.classList.remove("active"));
-      button.classList.add("active");
-      const category = button.getAttribute("data-category");
-      loadServices(category);
-    });
-  });
-
-  // Charger par défaut la catégorie Nettoyage
-  window.addEventListener("DOMContentLoaded", () => loadServices("nettoyage"));
+  // Charger les services au chargement de la page
+  window.addEventListener("DOMContentLoaded", loadServices);
 </script>
 
 </body>
